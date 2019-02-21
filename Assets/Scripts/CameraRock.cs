@@ -13,8 +13,8 @@ public class CameraRock : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Quaternion left = Quaternion.Euler(0,0,leftMax);
-        Quaternion right = Quaternion.Euler(0,0,rightMax);
+        Quaternion left = Quaternion.Euler(0, 0, leftMax);
+        Quaternion right = Quaternion.Euler(0, 0, rightMax);
     }
 
     void Update()

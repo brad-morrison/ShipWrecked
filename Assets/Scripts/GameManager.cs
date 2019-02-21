@@ -6,13 +6,22 @@ public class GameManager : MonoBehaviour
 {
     SharkState SharkState_;
     AnimationEvents animations;
-    
+    GameObject cam;
+
+    AudioSource audio;
+    public GameObject audioPrefab;
+    public AudioClip sword;
+    public AudioClip slice;
+
     public GameObject sharkDiscLeft;
     public GameObject sharkDiscRight;
     public GameObject sharkLeft;
     public GameObject sharkRight;
     public GameObject sharkDeathPrefab;
     public GameObject finPrefab;
+    public GameObject blood;
+
+    public string playerDirection;
     
     public float waterBreakSpeed;
     public float difficultySpeed;
@@ -35,6 +44,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         animations = GameObject.Find("player").GetComponent<AnimationEvents>(); 
+        cam = GameObject.Find("Main Camera");
 
         initStart();
     }
@@ -101,11 +111,13 @@ public class GameManager : MonoBehaviour
     {
         if (direction == "left" && leftActive)
         {
+            playerDirection = "left";
             animations.left();
             playerCorrect();
         }
         else if (direction == "right" && rightActive)
         {
+            playerDirection = "right";
             animations.right();
             playerCorrect();
         }
@@ -117,23 +129,10 @@ public class GameManager : MonoBehaviour
 
     public void playerCorrect()
     {
+        cam.GetComponent<CamShake>().shake(0.5f);
+        float pitchRand = Random.Range(0.90f, 1.1f);
+        playSound(sword, 0.5f, pitchRand);
         addToScore();
-        
-        // spawn shark death animation
-        if (leftActive)
-        {
-            Instantiate(sharkDeathPrefab, sharkLeft.transform.position, sharkLeft.transform.rotation);
-        }
-        else
-        {
-            Instantiate(sharkDeathPrefab, sharkRight.transform.position, sharkRight.transform.rotation);
-        }
-        
-        // reset discs
-        sharkDiscLeft.transform.eulerAngles = new Vector3(0,180,0);
-        sharkDiscRight.transform.eulerAngles = new Vector3(0,0,0);
-
-        //move fins inward
         moveFins();
         makeSharkAppear();
 
@@ -149,6 +148,45 @@ public class GameManager : MonoBehaviour
         {
             sharkDiscRight.GetComponent<SharkState>().lose = true;
         }
+    }
+
+    public void bloodSpurt(Transform pos)
+    {
+        
+        string extraBlood = RandPos ? "y" : "n";
+
+        GameObject bloodAnim2 = null;
+        GameObject bloodAnim;
+
+        bloodAnim = Instantiate(blood, pos.position, pos.rotation);
+
+        if (extraBlood == "y")
+        {
+            bloodAnim2 = Instantiate(blood, pos.position, pos.rotation);
+        }
+    
+        if (playerDirection == "left")
+        {
+            bloodAnim.transform.position = pos.position;
+            bloodAnim.transform.eulerAngles = new Vector3(0f,0f,0f);
+            if (extraBlood == "y")
+            {
+                bloodAnim2.transform.position = new Vector3(pos.position.x, pos.position.y + 80f, pos.position.z);
+                bloodAnim2.transform.eulerAngles = new Vector3(180f,0f,0f);
+            }
+        }
+        else
+        {
+            bloodAnim.transform.position = pos.position;
+            bloodAnim.transform.eulerAngles = new Vector3(0,180,0);
+            if (extraBlood == "y")
+            {
+                bloodAnim2.transform.position = new Vector3(pos.position.x, pos.position.y + 63f, pos.position.z);
+                bloodAnim2.transform.eulerAngles = new Vector3(180f,0f,0f);
+            }
+        }
+
+        
     }
 
     public void newFinCreate()
@@ -249,6 +287,7 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         gameOver = true;
+        Application.LoadLevel(Application.loadedLevel);
     }
 
     IEnumerator moveFin(GameObject fin, GameObject target)
@@ -259,5 +298,24 @@ public class GameManager : MonoBehaviour
     		yield return new WaitForEndOfFrame();
     	}
         yield return null;
+    }
+
+    public void playSound(AudioClip clip, float volume, float pitch)
+    {
+        StartCoroutine(_playSound(clip, volume, pitch));
+    }
+
+    IEnumerator _playSound(AudioClip sound, float volume, float pitch)
+    {
+        GameObject _audio = Instantiate(audioPrefab);
+        audio = _audio.GetComponent<AudioSource>();
+    	audio.volume = volume;
+        audio.pitch = pitch;
+        audio.PlayOneShot(sound);
+        if(!audio.isPlaying)
+        {
+            Destroy(_audio);
+        }
+    	yield return null;
     }
 }
