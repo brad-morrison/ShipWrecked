@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class InputActions : MonoBehaviour
 {
-    GameManager GameManager_;
-    AnimationEvents animationEvents;
+    GameManager GM;
     public bool inEditor;
     
     void Awake()
@@ -19,13 +18,12 @@ public class InputActions : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        animationEvents = GameObject.Find("player").GetComponent<AnimationEvents>();
-        GameManager_ = GameObject.Find("scripts").GetComponent<GameManager>();
+        GM = GameObject.Find("scripts").GetComponent<GameManager>();
     }
 
     public void TouchControls(string action)
     {
-        GameManager_.playerTouched(action);
+        GM.inputCheck(action);
     }
     
     // Update is called once per frame
@@ -33,14 +31,12 @@ public class InputActions : MonoBehaviour
     {
         if (Input.GetKeyDown("a") && inEditor)
         {
-            //animationEvents.left();
-            GameManager_.playerTouched("left");
+            GM.inputCheck("left");
         }
 
         if (Input.GetKeyDown("d") && inEditor)
         {
-            //animationEvents.right();
-            GameManager_.playerTouched("right");
+            GM.inputCheck("right");
         }
         
     }
