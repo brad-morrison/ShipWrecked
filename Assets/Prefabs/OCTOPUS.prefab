@@ -1,0 +1,147 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5541130740320305601
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7162764811179282523}
+  - component: {fileID: 689526641257091274}
+  m_Layer: 0
+  m_Name: octopus_object
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7162764811179282523
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5541130740320305601}
+  m_LocalRotation: {x: -0.8051897, y: -0.59301734, z: -0, w: 0}
+  m_LocalPosition: {x: 4.5346293, y: -4.260574, z: 0}
+  m_LocalScale: {x: 0.7454261, y: 0.7454261, z: 0.7454261}
+  m_Children: []
+  m_Father: {fileID: 263088598037240926}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -22.375002}
+--- !u!212 &689526641257091274
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5541130740320305601}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 7
+  m_Sprite: {fileID: 21300000, guid: 309cb1fd959e2534693ac6a2ce3c2c5b, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 4.7, y: 2.6}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!1 &8602403878044479724
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 263088598037240926}
+  - component: {fileID: 899803617690256268}
+  m_Layer: 0
+  m_Name: OCTOPUS
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &263088598037240926
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8602403878044479724}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 0.41891354, y: -3.12, z: 0.017578125}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7162764811179282523}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!114 &899803617690256268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8602403878044479724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36f9250fb5eef5c4d8b528b8497c855b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyType: octopus
+  rotate: 1
+  octopusDeathAnimation: {fileID: 5026273551832595680, guid: 6566956b93ff54c4b84595e6b24e69ce,
+    type: 3}
+  spinAnimation: {fileID: 8026349068269950538, guid: 09932040cbbfd4a489ceba886cfda106,
+    type: 3}
+  octopusFaceHug: {fileID: 6755291611455975247, guid: 1819c3a3e49be2344a2676181f9755dd,
+    type: 3}
+  faceHug: {fileID: 0}
+  holdingKnife: {fileID: 7035690124459905382, guid: 5a35a140df8b6a24c9cc40b8bf9f6019,
+    type: 3}
+  octopusWin: {fileID: 6349986727617179776, guid: 43be5d8e840103b4dad1fc932f3820ee,
+    type: 3}
+  octopusEnd: {fileID: 21300000, guid: cf3d7c3f2b8d09347812223f662c1fa3, type: 3}
+  currentEnemy: {fileID: 5541130740320305601}
+  player: {fileID: 0}
+  spin: {fileID: 0}
+  dead: 0
+  knifeAnimationOn: 0
+  readyForInput: 0
+  currentPhase: 0
+  spinSpeed: 30

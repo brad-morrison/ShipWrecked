@@ -5,7 +5,7 @@ using UnityEngine;
 public class InputActions : MonoBehaviour
 {
     GameManager GM;
-    public bool inEditor;
+    public bool inEditor, octopusActive, pufferfishActive;
     
     void Awake()
     {
@@ -23,7 +23,18 @@ public class InputActions : MonoBehaviour
 
     public void TouchControls(string action)
     {
-        GM.inputCheck(action);
+        if (octopusActive)
+        {
+            GM.octopusInteractionCheck(action);
+        }
+		else if (pufferfishActive)
+        {
+            GM.pufferfishInteractionCheck(action);
+        }
+        else
+        {
+        	GM.inputCheck(action);
+        }
     }
     
     // Update is called once per frame
@@ -31,12 +42,34 @@ public class InputActions : MonoBehaviour
     {
         if (Input.GetKeyDown("a") && inEditor)
         {
-            GM.inputCheck("left");
+            if (octopusActive)
+            {
+                GM.octopusInteractionCheck("left");
+            }
+            else if (pufferfishActive)
+            {
+                GM.pufferfishInteractionCheck("left");
+            }
+            else
+            {
+                GM.inputCheck("left");
+            }
         }
 
         if (Input.GetKeyDown("d") && inEditor)
         {
-            GM.inputCheck("right");
+            if (octopusActive)
+            {
+                GM.octopusInteractionCheck("right");
+            }
+            else if (pufferfishActive)
+            {
+                GM.pufferfishInteractionCheck("right");
+            }
+            else
+            {
+                GM.inputCheck("right");
+            }
         }
         
     }

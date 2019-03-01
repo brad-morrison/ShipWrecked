@@ -9,7 +9,7 @@ public class CamShake : MonoBehaviour
 	public float shakeAmounty;
 	public bool shakeOn;
 
-	Vector2 startingPos = new Vector2(0,0);
+	Vector3 startingPos = new Vector3(0,0,-10);
 
     public void shake(float time)
     {
@@ -43,5 +43,6 @@ public class CamShake : MonoBehaviour
     {
     	yield return new WaitForSeconds(time);
     	shakeOn = false;
+		transform.position = startingPos;
     }
 }

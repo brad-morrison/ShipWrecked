@@ -17,14 +17,22 @@ public class PlayerAnimations : MonoBehaviour
     
     public void moveLeft()
     {
+        if (!animationOn && !GM.playerDead)
+        {
         animator.SetBool("left", true);
-        GetComponent<SpriteRenderer>().flipX = false;
+        animator.SetBool("right", false);
+        transform.parent.transform.eulerAngles = new Vector3(0,0,0);
+        }
     }
 
     public void moveRight()
     {
+        if (!animationOn && !GM.playerDead)
+        {
         animator.SetBool("right", true);
-        GetComponent<SpriteRenderer>().flipX = true;
+        animator.SetBool("left", false);
+        transform.parent.transform.eulerAngles = new Vector3(0,180,0);
+        }
     }
 
     // called from animation at start frame
@@ -37,6 +45,8 @@ public class PlayerAnimations : MonoBehaviour
     void animationEnded()
     {
         animationOn = false;
+        animator.SetBool("left", false);
+        animator.SetBool("right", false);
     }
 
     // called from animation when sword strikes
