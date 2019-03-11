@@ -13,7 +13,7 @@ public class Button : MonoBehaviour
 
     bool active;
 
-    public bool audioTypeHome;
+    public bool audioTypeHome, audioTypeSettings;
 
     // Start is called before the first frame update
     void Start()

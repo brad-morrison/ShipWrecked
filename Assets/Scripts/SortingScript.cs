@@ -4,10 +4,20 @@ using UnityEngine;
 
 public class SortingScript : MonoBehaviour
 {
+    public bool isText;
+
     // Start is called before the first frame update
     void Start()
     {
-        this.gameObject.GetComponent<MeshRenderer>().sortingOrder = 20;
+        if (isText)
+        {
+
+        }
+        else
+        {
+            this.gameObject.GetComponent<MeshRenderer>().sortingOrder = 500;
+        }
+        
     }
 
     #if UNITY_EDITOR
@@ -16,7 +26,14 @@ public class SortingScript : MonoBehaviour
     /// </summary>
     void Update()
     {
-        this.gameObject.GetComponent<MeshRenderer>().sortingOrder = 20;
+        /*if (isText)
+        {
+
+        }
+        else
+        {
+            this.gameObject.GetComponent<MeshRenderer>().sortingOrder = 20;
+        }*/
     }
     #endif
 }

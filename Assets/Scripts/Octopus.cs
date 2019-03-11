@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Octopus : MonoBehaviour
 {
@@ -75,12 +76,16 @@ public class Octopus : MonoBehaviour
 
     public void octopusDeath()
     {
-        dead = true;
         InputActions_s.octopusActive = false;
+        dead = true;
+        GM.octoCount = GM.octoCount + 1;
+        Destroy(spin);
+        StopAllCoroutines();
+        
 
-        GameObject.Find("player").GetComponent<SpriteRenderer>().enabled = false;
+        GM.player.GetComponent<SpriteRenderer>().enabled = false;
         knifeAnimationOn = true;
-        GameObject knife = Instantiate(holdingKnife, holdingKnife.transform.position, Quaternion.identity);
+        GameObject knife = Instantiate(GM.knifePrefab, GM.knifePrefab.transform.position, Quaternion.identity);
         if (!GM.leftActive)
         {
             knife.GetComponent<SpriteRenderer>().flipX = true;
@@ -92,11 +97,11 @@ public class Octopus : MonoBehaviour
         // death animation
         if (GM.leftActive)
         {
-            octoTemp = Instantiate(octopusDeathAnimation, player.transform.position, Quaternion.identity);
+            octoTemp = Instantiate(octopusDeathAnimation, GM.player.transform.position, Quaternion.identity);
         }
         else
         {
-            octoTemp = Instantiate(octopusDeathAnimation, player.transform.position, Quaternion.identity);
+            octoTemp = Instantiate(octopusDeathAnimation, GM.player.transform.position, Quaternion.identity);
             octoTemp.transform.eulerAngles = new Vector3(0, 180, 0);
         }
 
@@ -113,7 +118,8 @@ public class Octopus : MonoBehaviour
         readyForInput = false;
         //hide current octopus, player and stop rotating
         currentEnemy.GetComponent<SpriteRenderer>().enabled = false;
-        GameObject.Find("player").GetComponent<SpriteRenderer>().enabled = false;
+        //GameObject.Find("player").GetComponent<SpriteRenderer>().enabled = false;
+        GM.player.GetComponent<SpriteRenderer>().enabled = false;
         rotate = false;
 
         //create spinning sprite at enemy location and start coroutine to move
@@ -122,7 +128,7 @@ public class Octopus : MonoBehaviour
     }
     public void octopusInteraction2()
     {
-        GameObject.Find("player").GetComponent<SpriteRenderer>().enabled = true;
+        GM.player.GetComponent<SpriteRenderer>().enabled = true;
         Destroy(spin);
         if (!dead)
         {
@@ -238,7 +244,7 @@ public class Octopus : MonoBehaviour
 
         if (knifeAnimationOn)
         {
-            GameObject.Find("player").GetComponent<SpriteRenderer>().enabled = false;
+            GM.player.GetComponent<SpriteRenderer>().enabled = false;
         }
     }
 
@@ -264,7 +270,10 @@ public class Octopus : MonoBehaviour
     IEnumerator killAfter(float seconds)
     {
         yield return new WaitForSeconds(seconds);
-        killPlayer2();
+        if(!playerDead)
+        {
+            killPlayer2();
+        }
         yield return null;
     }
 
@@ -272,7 +281,7 @@ public class Octopus : MonoBehaviour
     {
         yield return new WaitForSeconds(seconds);
         knifeAnimationOn = false;
-        GameObject.Find("player").GetComponent<SpriteRenderer>().enabled = true;
+        GM.player.GetComponent<SpriteRenderer>().enabled = true;
         Destroy(knife);
         yield return null;
     }

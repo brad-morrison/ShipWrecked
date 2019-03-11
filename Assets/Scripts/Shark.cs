@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Shark : MonoBehaviour
 {
@@ -52,6 +53,7 @@ public class Shark : MonoBehaviour
 
     public void sharkDeath()
     {
+        GM.sharkCount = GM.sharkCount + 1;
         rotate = false;
         GameObject sharkTemp;
         

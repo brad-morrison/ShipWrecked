@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PufferFish : MonoBehaviour
 {
@@ -106,16 +107,16 @@ public class PufferFish : MonoBehaviour
 
         GameObject gun;
 
-        player.transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = false;
+        GM.player.GetComponent<SpriteRenderer>().enabled = false;
         if (GM.leftActive)
         {
-            pistol = Instantiate(playerPistol, playerPistol.transform.position, Quaternion.identity);
+            pistol = Instantiate(GM.shootPrefab, GM.shootPrefab.transform.position, Quaternion.identity);
             pistol.transform.eulerAngles = new Vector3(0,180,0);
             gun = Instantiate(gun_shot, gunLeft, Quaternion.identity);
         }
         else
         {
-            pistol = Instantiate(playerPistol, playerPistol.transform.position, Quaternion.identity);
+            pistol = Instantiate(GM.shootPrefab, GM.shootPrefab.transform.position, Quaternion.identity);
             
             gun = Instantiate(gun_shot, gunRight, Quaternion.identity);
             gun.transform.eulerAngles = new Vector3(0,180,0);
@@ -125,11 +126,13 @@ public class PufferFish : MonoBehaviour
 
     public void kill()
     {
+        StopAllCoroutines();
+        GM.puffCount = GM.puffCount + 1;
         GM.camera.GetComponent<CamShake>().shake(0.2f);
         GM.bloodSpurt(puffTemp.transform, 2);
         Destroy(puffTemp);
         Destroy(pistol);
-        player.transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = true;
+        GM.player.GetComponent<SpriteRenderer>().enabled = true;
         GM.nextEnemy();
         Destroy(gameObject);
     }

@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using System.IO;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -14,7 +17,15 @@ public class GameManager : MonoBehaviour
     public GameObject audioPrefab;
     
     public GameObject camera;
+    // outfit stuff
     public GameObject player;
+    public string outfit;
+    public GameObject knifePrefab, shootPrefab;
+    //
+
+    // PLayerpref stuff
+    public int sharkCount, octoCount, puffCount, totalKillCount, highScore;
+    //
     public GameObject currentEnemy;
     public GameObject blood, ink, waterSplashPrefab, waterSplashSmallPrefab;
 
@@ -24,10 +35,15 @@ public class GameManager : MonoBehaviour
     public string enemyType; // used to check which type of enemy is attacking 
 
     // score
-    public GameObject scoreTextFront, scoreTextBack;
+    public GameObject scoreTextFront, scoreTextBack, highscoreFloatingText, highscoreFloatingText2;
     public int score;
 
-    public bool playerDead, hitWaterSplash;
+    // UI
+    public GameObject UI, scoreTextGO, scoreTextGOBack, bestText, bestTextBack, treasureChest;
+    public Sprite chestOpen;
+
+
+    public bool playerDead, hitWaterSplash, soundPlayed;
 
     void Start()
     {
@@ -35,6 +51,12 @@ public class GameManager : MonoBehaviour
         Spawner_s = GameObject.Find("scripts").GetComponent<Spawner>();
         audio = GameObject.Find("AUDIO").GetComponent<Audio>();
 
+        // get player prefs
+        sharkCount = PlayerPrefs.GetInt("s", 0);
+        octoCount = PlayerPrefs.GetInt("o", 0);
+        puffCount = PlayerPrefs.GetInt("p", 0);
+        highScore = PlayerPrefs.GetInt("h", 0);
+    
         Spawner_s.init();
     }
 
@@ -266,19 +288,74 @@ public class GameManager : MonoBehaviour
         scoreTextBack.GetComponent<TextMesh>().text = score.ToString();
         // temp difficulty control
         difficultySpeed = difficultySpeed + 1f;
+
+        if (score == highScore + 1)
+        {
+            StartCoroutine(activeFor(0.5f, highscoreFloatingText));
+        }
+    }
+
+    IEnumerator activeFor(float secs, GameObject obj)
+    {
+        obj.active = true;
+        audio.sound(audio.highScore, 1, 1);
+        yield return new WaitForSeconds(secs);
+        obj.active = false;
     }
 
     public void gameOver()
     {
         //Destroy(currentEnemy);
         // open UI here
-        Application.LoadLevel(Application.loadedLevel);
+
+        // PP
+        setPlayerPrefs();
+
+        UI.active = true;
+        scoreTextGO.GetComponent<TextMesh>().text = score.ToString();
+        scoreTextGOBack.GetComponent<TextMesh>().text = score.ToString();
+        bestText.GetComponent<TextMesh>().text = PlayerPrefs.GetInt("h", 0).ToString();
+        bestTextBack.GetComponent<TextMesh>().text = PlayerPrefs.GetInt("h", 0).ToString();
+        scoreTextFront.active = false;
+        scoreTextBack.active = false;
+
+        // check for high score
+        if (highScore < score)
+        {
+            StartCoroutine(openChest());
+            StartCoroutine(showHighText2());
+        }
+
+        //Time.timeScale = 0;
+        //Application.LoadLevel(Application.loadedLevel);
     }
     
+    IEnumerator openChest()
+    {
+        yield return new WaitForSeconds(1);
+        treasureChest.GetComponent<SpriteRenderer>().sprite = chestOpen;
+    }
+
+    IEnumerator showHighText2()
+    {
+        yield return new WaitForSeconds(1);
+        highscoreFloatingText2.active = true;
+        if (!soundPlayed)
+        {
+            audio.sound(audio.highScore, 1, 1);
+        }
+        yield return null;
+        soundPlayed = true;
+    }
+
     public void gameOver(float time)
     {
         //Destroy(currentEnemy);
         // open UI here
+        
+        // PP
+        //setPlayerPrefs();
+
         StartCoroutine(gameOverAfter(time));
     }
 
@@ -296,10 +373,25 @@ public class GameManager : MonoBehaviour
         audio.sound(audio.waterButton1, 1, 1);
     }
 
+    void setPlayerPrefs()
+    {
+        // PP
+        totalKillCount = sharkCount + octoCount + puffCount;
+        PlayerPrefs.SetInt("s", sharkCount);
+        PlayerPrefs.SetInt("o", octoCount);
+        PlayerPrefs.SetInt("p", puffCount);
+        PlayerPrefs.SetInt("t", totalKillCount);
+
+        if (highScore < score)
+        {
+            PlayerPrefs.SetInt("h", score);
+        }
+    }
+
     IEnumerator gameOverAfter(float time)
     {
         yield return new WaitForSeconds(time);
-        Application.LoadLevel(Application.loadedLevel);
+        gameOver();
         yield return null;
     }
 

@@ -18,6 +18,7 @@ public class Audio : MonoBehaviour
     public AudioClip waterButton1;
     public AudioClip waterButton2;
     public AudioClip splashIn;
+    public AudioClip highScore;
 
     // Start is called before the first frame update
     void Start()
