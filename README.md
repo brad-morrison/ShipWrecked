@@ -5,3 +5,4 @@ A simple iOS game. The player controls the pirate stuck on a remote rock in the 
 # Other iOS Games
 
 The Yeti - https://appadvice.com/app/the-yeti/900236234
+k
