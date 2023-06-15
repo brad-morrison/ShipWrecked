@@ -136,13 +136,13 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 1
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
     maxTextureSize: 2048
@@ -154,7 +154,7 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 1
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: iPhone
     maxTextureSize: 2048
@@ -166,7 +166,7 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 1
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: WebGL
     maxTextureSize: 2048
@@ -178,7 +178,7 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 1
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Server
     maxTextureSize: 2048
@@ -190,7 +190,7 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 1
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -667,28 +667,28 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      buttons_8: 21300016
-      buttons_10: 21300020
-      buttons_14: 21300028
-      buttons_2: 21300004
       buttons_0: 21300000
-      buttons_4: 21300008
-      buttons_6: 21300012
       buttons_1: 21300002
+      buttons_10: 21300020
       buttons_11: 21300022
       buttons_12: 21300024
-      buttons_21: 21300042
       buttons_13: 21300026
-      buttons_19: 21300038
-      buttons_7: 21300014
-      buttons_17: 21300034
+      buttons_14: 21300028
       buttons_15: 21300030
       buttons_16: 21300032
-      buttons_5: 21300010
+      buttons_17: 21300034
       buttons_18: 21300036
+      buttons_19: 21300038
+      buttons_2: 21300004
       buttons_20: 21300040
-      buttons_9: 21300018
+      buttons_21: 21300042
       buttons_3: 21300006
+      buttons_4: 21300008
+      buttons_5: 21300010
+      buttons_6: 21300012
+      buttons_7: 21300014
+      buttons_8: 21300016
+      buttons_9: 21300018
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

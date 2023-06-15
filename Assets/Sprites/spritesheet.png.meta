@@ -157,13 +157,13 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 1
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
     maxTextureSize: 512
@@ -175,7 +175,7 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 1
     androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 1
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: iPhone
     maxTextureSize: 2048
@@ -187,7 +187,7 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 1
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: WebGL
     maxTextureSize: 2048
@@ -199,7 +199,7 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 1
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Server
     maxTextureSize: 2048
@@ -211,7 +211,7 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 1
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -835,35 +835,35 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      cloud_1: 21300008
+      cloud_2: 21300010
+      cloud_3: 21300012
+      fin: 21300024
       land_1: 21300028
-      sea_highlight: 21300002
-      spritesheet_5: 21300042
-      shark: 21300022
-      spritesheet_2: 21300036
-      sword: 21300050
-      spritesheet_8: 21300052
+      pirate: 21300016
+      pirate_arm: 21300020
       pirate_no_arm: 21300018
+      rock: 21300014
+      sea_base: 21300000
+      sea_highlight: 21300002
+      sea_with_highlight: 21300026
+      shark: 21300022
+      ship: 21300030
+      sky: 21300004
+      spritesheet_0: 21300032
+      spritesheet_1: 21300034
+      spritesheet_10: 21300056
+      spritesheet_2: 21300036
       spritesheet_3: 21300038
       spritesheet_4: 21300040
-      spritesheet_0: 21300032
-      cloud_3: 21300012
-      pirate: 21300016
-      cloud_2: 21300010
-      rock: 21300014
-      spritesheet_1: 21300034
-      sun: 21300006
-      sky: 21300004
-      wave: 21300048
-      sea_with_highlight: 21300026
-      sea_base: 21300000
+      spritesheet_5: 21300042
       spritesheet_6: 21300044
-      cloud_1: 21300008
-      fin: 21300024
-      spritesheet_9: 21300054
-      ship: 21300030
       spritesheet_7: 21300046
-      spritesheet_10: 21300056
-      pirate_arm: 21300020
+      spritesheet_8: 21300052
+      spritesheet_9: 21300054
+      sun: 21300006
+      sword: 21300050
+      wave: 21300048
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
