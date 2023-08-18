@@ -6,3 +6,4 @@ A simple pixel iOS game. The player controls the pirate stuck on a remote rock i
 
 The Yeti - https://appadvice.com/app/the-yeti/900236234
 Cinema Sim
+The Cartographer
